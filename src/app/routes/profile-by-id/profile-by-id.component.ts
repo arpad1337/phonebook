@@ -58,7 +58,7 @@ export class ProfileByIdComponent implements OnInit {
       }
     });
   }
-
+  
 }
 
 @Component({

@@ -3,6 +3,6 @@
   <p>Are you sure you want to delete this profile?</p>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="data.id" cdkFocusInitial color="warn">Ok</button>
+  <button mat-raised-button (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button [mat-dialog-close]="data.id" cdkFocusInitial color="warn">Ok</button>
 </div>
