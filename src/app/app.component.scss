@@ -1,0 +1,37 @@
+mat-toolbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+#menu-button {
+    position: fixed;
+    right: 0;
+    top: 6px;
+}
+
+main {
+    position: fixed;
+    height: calc(100% - 56px);
+    top: 56px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    & > .loader {
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        display: block;
+        font-size: 14px;
+        width: 148px;
+        text-align: center;
+        height: 150px;
+        mat-spinner {
+            margin: auto auto 14px;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+[
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "phoneNumber": "+12345678902",
+        "notes": "Hello",
+        "profileColor": "#aac4ef"
+    },
+    {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "phoneNumber": "+13456789022",
+        "notes": "Hello",
+        "profileColor": "#d2aaef"
+    }
+]
