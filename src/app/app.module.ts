@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 import {
   MatButtonToggleModule,
   MatButtonModule, 
@@ -12,7 +13,10 @@ import {
   MatToolbarModule,
   MatMenuModule,
   MatIconModule,
-  MatCardModule
+  MatCardModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatDialogModule
 } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -27,8 +31,9 @@ import { ShortNamePipe } from './pipes/short-name.pipe';
 import { SettingsComponent } from './routes/settings/settings.component';
 import { AboutComponent } from './routes/about/about.component';
 import { ProfileBadgeComponent } from './components/profile-badge/profile-badge.component';
-import { ProfileByIdComponent } from './routes/profile-by-id/profile-by-id.component';
+import { ProfileByIdComponent, DeleteDialog } from './routes/profile-by-id/profile-by-id.component';
 import { CreateProfileComponent } from './routes/create-profile/create-profile.component';
+import { UpdateProfileComponent } from './routes/update-profile/update-profile.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +45,9 @@ import { CreateProfileComponent } from './routes/create-profile/create-profile.c
     AboutComponent,
     ProfileBadgeComponent,
     ProfileByIdComponent,
-    CreateProfileComponent
+    CreateProfileComponent,
+    UpdateProfileComponent,
+    DeleteDialog
   ],
   imports: [
     BrowserModule,
@@ -55,7 +62,11 @@ import { CreateProfileComponent } from './routes/create-profile/create-profile.c
     MatMenuModule,
     MatIconModule,
     MatCardModule,
-    HttpClientModule
+    MatInputModule,
+    MatFormFieldModule,
+    HttpClientModule,
+    FormsModule,
+    MatDialogModule
   ],
   providers: [
     {
@@ -64,6 +75,9 @@ import { CreateProfileComponent } from './routes/create-profile/create-profile.c
     },
     ProfileDao,
     ProfileService
+  ],
+  entryComponents: [
+    DeleteDialog
   ],
   bootstrap: [AppComponent]
 })

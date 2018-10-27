@@ -1,3 +1,26 @@
-<p>
-  profile-by-id works!
-</p>
+<mat-card>
+  <app-profile-badge [profile]="profile"></app-profile-badge>
+  <h3>First name</h3>
+  <p>{{profile.firstName}}</p>
+  <h3>Last name</h3>
+  <p>{{profile.lastName}}</p>
+  <h3>Phone number</h3>
+  <p>{{profile.phoneNumber | phoneNumber}}</p>
+  <h3>Notes</h3>
+  <p>{{profile.firstName}}</p>
+</mat-card>
+
+<div class="actions">
+
+  <button mat-raised-button (click)="back()">
+      <mat-icon>chevron_left</mat-icon> Back
+  </button>
+  <button mat-raised-button color="primary" (click)="edit()">
+      <mat-icon>person</mat-icon> Edit
+  </button>
+
+  <button mat-raised-button color="warn" (click)="delete()">
+      <mat-icon>delete_sweep</mat-icon> Delete
+  </button>
+
+</div>

@@ -1,0 +1,33 @@
+<mat-card class="create-profile">
+    <mat-form-field>
+      <input matInput placeholder="First name" name="firstName" [(ngModel)]="model.firstName">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput placeholder="Last name" name="lastName" [(ngModel)]="model.lastName">
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput placeholder="Phone number" [(ngModel)]="phoneNumber" name="phoneNumber">
+    </mat-form-field>
+    <span>Formatted number: {{model.phoneNumber | phoneNumber}}</span>
+  
+    <mat-form-field>
+      <textarea matInput placeholder="Notes" name="notes" [(ngModel)]="model.notes"></textarea>
+    </mat-form-field>
+  
+    <mat-error *ngIf="error">{{error}}</mat-error>
+  
+  </mat-card>
+  
+  <div class="actions">
+  
+    <button mat-raised-button (click)="cancel()">
+        <mat-icon>chevron_left</mat-icon> Cancel
+    </button>
+    <button mat-raised-button color="primary" (click)="commit()">
+        <mat-icon>person_add</mat-icon> Update
+    </button>
+  
+  </div>
+  

@@ -18,12 +18,16 @@ export class ProfilesComponent implements OnInit {
 
   ngOnInit() {
     this.profileService.getProfiles().subscribe((profiles: Profile[]) => {
-      this.profiles = profiles;
+      this.profiles = profiles.sort((a: Profile, b: Profile) => a.firstName.localeCompare(b.firstName));
     });
   }
 
   createProfile() {
     this.router.navigate(['create-profile']);
+  }
+
+  goToProfile(id: number) {
+    this.router.navigate(['profiles', id]);
   }
 
 }

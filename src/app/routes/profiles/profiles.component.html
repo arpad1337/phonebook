@@ -1,4 +1,4 @@
-<mat-card *ngFor="let profile of profiles">
+<mat-card *ngFor="let profile of profiles" (click)="goToProfile(profile.id)">
   <mat-card-title>{{profile.firstName}} {{profile.lastName}}</mat-card-title>
   <mat-card-subtitle>{{profile.phoneNumber | phoneNumber}}</mat-card-subtitle>
   <app-profile-badge [profile]="profile"></app-profile-badge>

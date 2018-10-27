@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Profile } from '../../models/profile';
-import { Router } from '@angular/router';
-import { ProfileUtils } from '../../utils/profile.utils';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ProfileService } from '../../services/profile.service';
+import { Profile } from '../../models/profile';
+import { ProfileUtils } from '../../utils/profile.utils';
 
 @Component({
-  selector: 'app-create-profile',
-  templateUrl: './create-profile.component.html',
-  styleUrls: ['./create-profile.component.scss']
+  selector: 'app-update-profile',
+  templateUrl: './update-profile.component.html',
+  styleUrls: ['./update-profile.component.scss']
 })
-export class CreateProfileComponent implements OnInit {
+export class UpdateProfileComponent implements OnInit {
 
   public model: Profile = {
     phoneNumber: '',
@@ -19,11 +19,16 @@ export class CreateProfileComponent implements OnInit {
     notes: ''
   };
 
-  public error: string;;
+  public error: string;
 
-  constructor(private router: Router, private profileService: ProfileService) { }
+  constructor(private router: Router, private profileService: ProfileService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.subscribe((params) => {
+      this.profileService.getProfileById(+params['id']).subscribe((profile: Profile) => {
+        this.model = profile;
+      });
+    })
   }
 
   get phoneNumber(): string {
@@ -53,13 +58,11 @@ export class CreateProfileComponent implements OnInit {
   }
 
   commit() {
-    this.model.profileColor = ProfileUtils.generateRandomColor();
-
     if (!this.validateModel()) {
       return;
     }
 
-    this.profileService.createProfile(this.model).subscribe(() => {
+    this.profileService.updateProfile(this.model).subscribe(() => {
       this.router.navigate(['profiles']);
     })
   }
