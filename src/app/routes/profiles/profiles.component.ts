@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class ProfilesComponent implements OnInit {
 
   profiles: Profile[] = [];
+  filteredProfiles: Profile[] = [];
+  private _searchTerm = "";
 
   constructor(private profileService: ProfileService, private router: Router) {
 
@@ -19,7 +21,24 @@ export class ProfilesComponent implements OnInit {
   ngOnInit() {
     this.profileService.getProfiles().subscribe((profiles: Profile[]) => {
       this.profiles = profiles.sort((a: Profile, b: Profile) => a.firstName.localeCompare(b.firstName));
+      this.filteredProfiles = this.profiles;
     });
+  }
+
+  get searchTerm() {
+    return this._searchTerm;
+  }
+
+  set searchTerm(value: string) {
+    value = value.trim();
+    this._searchTerm = value;
+    this.filteredProfiles = this.profiles.filter((profile: Profile) => {
+      return (
+        profile.firstName.toLowerCase().indexOf(value.toLowerCase()) > -1 || 
+        profile.lastName.toLowerCase().indexOf(value.toLowerCase()) > -1 || 
+        (profile.firstName + " " + profile.lastName).toLowerCase().indexOf(value.toLowerCase()) > -1
+      ); 
+    })
   }
 
   createProfile() {

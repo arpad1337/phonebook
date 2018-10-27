@@ -1,4 +1,10 @@
-<mat-card *ngFor="let profile of profiles" (click)="goToProfile(profile.id)">
+<mat-form-field appearance="outline" id="search">
+  <mat-label>Search</mat-label>
+  <input matInput placeholder="Type first name or last name or both" name="searchTerm" [(ngModel)]="searchTerm">
+  <mat-icon matSuffix>image_search</mat-icon>
+</mat-form-field>
+
+<mat-card *ngFor="let profile of filteredProfiles" (click)="goToProfile(profile.id)">
   <mat-card-title>{{profile.firstName}} {{profile.lastName}}</mat-card-title>
   <mat-card-subtitle>{{profile.phoneNumber | phoneNumber}}</mat-card-subtitle>
   <app-profile-badge [profile]="profile"></app-profile-badge>
