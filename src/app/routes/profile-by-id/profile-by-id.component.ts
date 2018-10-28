@@ -1,8 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProfileService } from '../../services/profile.service';
 import { Profile } from '../../models/profile';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+import { DeleteProfileDialog } from './delete-profile.dialog';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-profile-by-id',
@@ -47,7 +48,7 @@ export class ProfileByIdComponent implements OnInit {
   }
 
   delete() {
-    let dialogRef = this.dialog.open(DeleteDialog, {
+    let dialogRef = this.dialog.open(DeleteProfileDialog, {
       data: this.profile
     });
     dialogRef.afterClosed().subscribe((id) => {
@@ -59,21 +60,4 @@ export class ProfileByIdComponent implements OnInit {
     });
   }
   
-}
-
-@Component({
-  selector: 'delete-profile-dialog',
-  templateUrl: 'delete-profile.dialog.html',
-})
-export class DeleteDialog {
-
-  constructor(
-    public dialogRef: MatDialogRef<DeleteDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: Profile
-  ) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
 }

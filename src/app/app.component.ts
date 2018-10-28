@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProfileService } from './services/profile.service';
 import { Router } from '@angular/router';
 
@@ -7,12 +7,15 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   public loading = true;
 
   constructor(private profileService: ProfileService, private router: Router) {
-    window['PS'] = profileService;
+    
+  }
+
+  ngOnInit() {
     if (!this.profileService.isMigrated()) {
       this.profileService.sync().subscribe(_ => {
         this.loading = false;
@@ -23,4 +26,5 @@ export class AppComponent {
     this.loading = false;
     this.router.navigate(['profiles']);
   }
+
 }

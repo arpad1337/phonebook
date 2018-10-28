@@ -31,9 +31,10 @@ import { ShortNamePipe } from './pipes/short-name.pipe';
 import { SettingsComponent } from './routes/settings/settings.component';
 import { AboutComponent } from './routes/about/about.component';
 import { ProfileBadgeComponent } from './components/profile-badge/profile-badge.component';
-import { ProfileByIdComponent, DeleteDialog } from './routes/profile-by-id/profile-by-id.component';
+import { ProfileByIdComponent } from './routes/profile-by-id/profile-by-id.component';
 import { CreateProfileComponent } from './routes/create-profile/create-profile.component';
 import { UpdateProfileComponent } from './routes/update-profile/update-profile.component';
+import { DeleteProfileDialog } from './routes/profile-by-id/delete-profile.dialog';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { UpdateProfileComponent } from './routes/update-profile/update-profile.c
     ProfileByIdComponent,
     CreateProfileComponent,
     UpdateProfileComponent,
-    DeleteDialog
+    DeleteProfileDialog
   ],
   imports: [
     BrowserModule,
@@ -77,7 +78,7 @@ import { UpdateProfileComponent } from './routes/update-profile/update-profile.c
     ProfileService
   ],
   entryComponents: [
-    DeleteDialog
+    DeleteProfileDialog
   ],
   bootstrap: [AppComponent]
 })
