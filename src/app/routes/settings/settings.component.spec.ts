@@ -20,6 +20,7 @@ import {
 import { ProfileDao } from '../../daos/profile.dao';
 import { LOCAL_STORAGE } from '../../utils/local-storage.injection-token';
 import { HttpClientModule } from '@angular/common/http';
+import { of } from 'rxjs';
 
 class MockLocalStorage implements Storage {
   values = new Map<string, string>();
@@ -95,4 +96,13 @@ describe('SettingsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should sync db', () => {
+    const profileService = TestBed.get(ProfileService);
+    const syncSpy = spyOn(profileService,'sync').and.returnValue(of([]));
+    const app = fixture.debugElement.componentInstance as SettingsComponent;
+    app.syncDatabase();
+    expect(syncSpy).toHaveBeenCalled();
+    expect(syncSpy).toHaveBeenCalledTimes(1);
+  })
 });
