@@ -54,6 +54,8 @@ import { DeleteProfileDialog } from './routes/profile-by-id/delete-profile.dialo
     BrowserModule,
     AppRoutingModule,
     CommonModule,
+    HttpClientModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatButtonToggleModule,
@@ -65,8 +67,6 @@ import { DeleteProfileDialog } from './routes/profile-by-id/delete-profile.dialo
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
-    HttpClientModule,
-    FormsModule,
     MatDialogModule
   ],
   providers: [

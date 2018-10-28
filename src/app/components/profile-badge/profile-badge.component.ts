@@ -8,7 +8,14 @@ import { Profile } from '../../models/profile';
 })
 export class ProfileBadgeComponent implements OnInit {
 
-  @Input() profile: Profile;
+  @Input() profile: Profile = {
+    phoneNumber: '',
+    lastName: '',
+    firstName: '',
+    profileColor: '',
+    notes: ''
+  };
+;
 
   constructor() { }
 

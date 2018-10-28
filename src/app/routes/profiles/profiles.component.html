@@ -9,6 +9,9 @@
   <mat-card-subtitle>{{profile.phoneNumber | phoneNumber}}</mat-card-subtitle>
   <app-profile-badge [profile]="profile"></app-profile-badge>
 </mat-card>
+<mat-card *ngIf="filteredProfiles.length < 1">
+  No profiles found
+</mat-card>
 <button mat-fab class="add-new" (click)="createProfile()">
   <mat-icon aria-label="Create new profile">person_add</mat-icon>
 </button>

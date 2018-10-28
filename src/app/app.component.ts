@@ -11,7 +11,10 @@ export class AppComponent implements OnInit {
 
   public loading = true;
 
-  constructor(private profileService: ProfileService, private router: Router) {
+  constructor(
+    private profileService: ProfileService, 
+    private router: Router
+  ) {
     
   }
 
