@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ProfileService } from '../../services/profile.service';
 import { Profile } from '../../models/profile';
 import { ProfileUtils } from '../../utils/profile.utils';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-update-profile',
@@ -21,7 +22,12 @@ export class UpdateProfileComponent implements OnInit {
 
   public error: string;
 
-  constructor(private router: Router, private profileService: ProfileService, private route: ActivatedRoute) { }
+  constructor(
+    private router: Router, 
+    private profileService: ProfileService, 
+    private route: ActivatedRoute,
+    private location: Location
+  ) { }
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -68,7 +74,7 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['profiles']);
+    this.location.back();
   }
 
 }
