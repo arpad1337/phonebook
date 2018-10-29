@@ -7,7 +7,7 @@ import { HttpClientModule, HttpClient, HttpHeaders, HttpResponse, HttpParams } f
 import { of, Observable } from 'rxjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-class MockLocalStorage implements Storage {
+class LocalStorageStub implements Storage {
   values = new Map<string, string>();
 
   setItem(k, v) {
@@ -54,7 +54,7 @@ const TEST_DATA = [
   }
 ];
 
-class MockHttpClient {
+class HttpClientStub {
   get() {
       return of(TEST_DATA);
   }
@@ -62,20 +62,16 @@ class MockHttpClient {
 
 describe('ProfileService', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [
-      HttpClientModule,
-      HttpClientTestingModule
-    ],
     providers: [
       ProfileService,
       ProfileDao,
       {
         provide: HttpClient,
-        useValue: new MockHttpClient()
+        useValue: new HttpClientStub()
       },
       {
         provide: LOCAL_STORAGE,
-        useValue: new MockLocalStorage()
+        useValue: new LocalStorageStub()
       }
     ]
   }));
