@@ -22,10 +22,10 @@ import {
 import { ProfileDao } from './daos/profile.dao';
 import { LOCAL_STORAGE } from './utils/local-storage.injection-token';
 import { HttpClientModule } from '@angular/common/http';
-import { observable, of } from 'rxjs';
 import { Component } from '@angular/core';
+import { of } from 'rxjs'
 
-class MockLocalStorage implements Storage {
+class LocalStorageStub implements Storage {
   values = new Map<string, string>();
 
   setItem(k, v) {
@@ -87,7 +87,7 @@ describe('AppComponent', () => {
         ProfileDao,
         {
           provide: LOCAL_STORAGE,
-          useValue: new MockLocalStorage()
+          useValue: new LocalStorageStub()
         }
       ]
     }).compileComponents();
